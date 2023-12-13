@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Scientific Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-body-transparent">
+    <div class="container-fluid">
+      <img src="output-onlinegiftools.gif" width="45" class="gif">
+      <a class="navbar-brand" href="index.html">Scientific Calculator</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">Modes</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="index.html">Basic Mode</a></li>
+              <li><a class="dropdown-item" href="index.html">Advanced Mode</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item" ><a class="nav-link active" aria-current="page" href="index.html">Home</a></li>
+        </ul>
+      </div>
+    </div>
+</nav><br>
+
+<h1 class="heading">Scientific Calculator</h1><br>
+
+<div id="app">
+  <div class="calculator">
+    <button @click="changeModeEvent" class="toggle-button">
+      <p v-if="changeMode">Show Advanced Mode &nbsp; &nbsp; &#9864;</p>
+      <p v-else>Show Basic Mode &nbsp; &nbsp; &#9862;</p>
+    </button>
+    <div class="results">
+      <input class="input" v-model="current" />
+    </div>
+    <div class="mode" v-if="changeMode">
+      <button class="button" @click="press">7</button>
+      <button class="button" @click="press">8</button>
+      <button class="button" @click="press">9</button>
+      <button class="button" @click="press">*</button>
+      <button class="button" @click="press">&#60;=</button>
+      <button class="button" @click="press">C</button>
+      <button class="button" @click="press">4</button>
+      <button class="button" @click="press($event)">5</button>
+      <button class="button" @click="press">6</button>
+      <button class="button" @click="press">/</button>
+      <button class="button" @click="press">(</button>
+      <button class="button" @click="press">)</button>
+      <button class="button" @click="press">1</button>
+      <button class="button" @click="press">2</button>
+      <button class="button" @click="press">3</button>
+      <button class="button" @click="press">-</button>
+      <button class="button" @click="press">x ²</button>
+      <button class="button" @click="press">±</button>
+      <button class="button" @click="press">0</button>
+      <button class="button" @click="press">.</button>
+      <button class="button" @click="press">%</button>
+      <button class="button" @click="press">+</button>
+      <button class="button equal-sign" @click="press">=</button>
+    </div>
+    <div class="mode" v-else>
+      <button class="button" @click="press">sin</button>
+      <button class="button" @click="press">cos</button>
+      <button class="button" @click="press">tan</button>
+      <button class="button" @click="press">x^</button>
+      <button class="button" @click="press">&#60;=</button>
+      <button class="button" @click="press">C</button>
+      <button class="button" @click="press">log</button>
+      <button class="button" @click="press">ln</button>
+      <button class="button" @click="press">e</button>
+      <button class="button" @click="press">∘</button>
+      <button class="button" @click="press">rad</button>
+      <button class="button" @click="press">√</button>
+      <button class="button" @click="press">7</button>
+      <button class="button" @click="press">8   </button>
+      <button class="button" @click="press">9</button>
+      <button class="button" @click="press">/</button>
+      <button class="button" @click="press">x ²</button>
+      <button class="button" @click="press">x !</button>
+      <button class="button" @click="press">4</button>
+      <button class="button" @click="press">5</button>
+      <button class="button" @click="press">6</button>
+      <button class="button" @click="press">*</button>
+      <button class="button" @click="press">(</button>
+      <button class="button" @click="press">)</button>
+      <button class="button" @click="press">1</button>
+      <button class="button" @click="press">2</button>
+      <button class="button" @click="press">3</button>
+      <button class="button" @click="press">-</button>
+      <button class="button" @click="press">%</button>
+      <button class="button" @click="press">±</button>
+      <button class="button" @click="press">0</button>
+      <button class="button" @click="press">.</button>
+      <button class="button" @click="press">&#x003C0;</button>
+      <button class="button" @click="press">+</button>
+      <button class="button equal-sign" @click="press">=</button>
+    </div>
+  </div>
+</div><br><br><br>
+
+<div class="about">
+  <center><h2 class="whatido">C A L C U L A T O R &nbsp&nbsp&nbsp&nbspM O D E S</h2><br><br><br></center>
+
+  <img class="team" src="output-onlinegiftools.gif"><br>
+  <h4>BASIC MODE</h4>
+  <p>The Basic Mode of the Scientific Calculator consists of the following functions:<br>
+  Addition(+), Subtraction(-), Multiplication(*), Division(/), Square(^2) and percentage(%)</p>
+  <br><br><br><br>
+  
+  <img class="code" src="maths.gif"><br>
+  <h4>ADVANCED MODE</h4>
+  <p>The Advanced Mode of the Scientific Calculator consists of the following functions:<br>
+  sin, cos, tan, X^, log, ln, e, rad, root (X^1/2), factorial (X!) and pi</p>
+  <br>
+</div>
+
+<div class="container">
+  <footer class="py-5">
+    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+      <p>Made with ❤️ by Ishita Goel</p>
+    </div>
+  </footer>
+</div>
+
+<!-- partial -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js'></script><script  src="script.js"></script>
+
+</body>
+</html>
